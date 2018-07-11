@@ -1,5 +1,5 @@
 /**
- * Created by tdzl2003 on 12/17/16.
+ * Created by colinambitious on 12/17/16.
  */
 
 import { AppRegistry } from 'react-native';
