@@ -25,8 +25,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const api = 'http://api.douban.com/v2/movie/in_theaters';
-
+const api = 'https://api.douban.com/v2/movie/in_theaters';
 
 export default class List extends Component {
     static navigationOptions = {
