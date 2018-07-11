@@ -1,9 +1,6 @@
 /**
  * Created by colinambitious on 2017/9/7.
  */
-/**
- * Created by tdzl2003 on 12/17/16.
- */
 import React, {Component} from 'react';
 import {
     StyleSheet,
