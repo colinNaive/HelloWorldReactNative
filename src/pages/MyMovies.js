@@ -13,6 +13,15 @@ import {
     StackNavigator,
 } from 'react-native';
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+});
+
 export default class MyMovies extends Component {
     static navigationOptions = {
         title: '我的',
@@ -21,7 +30,7 @@ export default class MyMovies extends Component {
 
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <Text>我的电影</Text>
             </View>
 

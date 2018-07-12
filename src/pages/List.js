@@ -64,7 +64,7 @@ export default class List extends Component {
     }
 
     render() {
-        const {movies, refreshing, childState} = this.state;
+        const {movies, refreshing} = this.state;
         const {navigate} = this.props.navigation;
         return (
             <View>

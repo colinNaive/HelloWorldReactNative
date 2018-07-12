@@ -7,10 +7,10 @@ import {
     StackNavigator
 } from 'react-navigation';
 
-import List from './pages/List';
-import Detail from './pages/Detail';
-import Cinema from './pages/Cinemas';
-import MyMovies from './pages/MyMovies';
+import List from '../pages/List';
+import Detail from '../pages/Detail';
+import Cinema from '../pages/Cinemas';
+import MyMovies from '../pages/MyMovies';
 
 const MyTab = TabNavigator({
     List: {screen: List},
