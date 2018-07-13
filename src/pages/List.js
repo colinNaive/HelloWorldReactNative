@@ -12,9 +12,11 @@ import {
     FlatList,
     StackNavigator
 } from 'react-native';
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux';
+import * as listAction from '../actions/ListAction'
 
 import Item from '../components/Item';
-import movies from '../../movies.json';
 
 const styles = StyleSheet.create({
     row: {
@@ -24,47 +26,18 @@ const styles = StyleSheet.create({
 
 const api = 'https://api.douban.com/v2/movie/in_theaters';
 
-export default class List extends Component {
+class List extends Component {
     static navigationOptions = {
         title: '上映',
         header: null
     };
-    state = {
-        movies: movies.subjects,
-        refreshing: false,
-        childState: '',
-    };
-    refreshing = false;
-
-    fetchdata = () => {
-        if (this.refreshing) {
-            return;
-        }
-        this.setState({
-            refreshing: true
-        });
-        this.refreshing = true;
-        fetch(api)
-            .then((response) => response.text())
-            .then((responseText) => {
-                const json = JSON.parse(responseText);
-                this.setState({
-                    movies: json.subjects,
-                    refreshing: false,
-                });
-                this.refreshing = false;
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    };
 
     componentDidMount() {
-        // this.fetchdata();
+        this.props.events.initData()
     }
 
     render() {
-        const {movies, refreshing} = this.state;
+        const {movies, refreshing} = this.props;
         const {navigate} = this.props.navigation;
         return (
             <View>
@@ -72,7 +45,7 @@ export default class List extends Component {
                     style={styles.row}
                     numColumns={3}
                     keyExtractor={item => item.id}
-                    onRefresh={this.fetchdata}
+                    onRefresh={this.props.events.fetchListData}
                     refreshing={refreshing}
                     data={movies}
                     renderItem={
@@ -96,3 +69,16 @@ export default class List extends Component {
         );
     }
 }
+
+const map2Props = dispatch => {
+    return {
+        events: bindActionCreators(listAction, dispatch)
+    }
+}
+
+export default connect(
+    (state) => ({
+        refreshing: state.listFetchData.refreshing,
+        movies: state.listFetchData.movies
+    }), map2Props
+)(List)

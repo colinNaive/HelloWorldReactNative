@@ -2,16 +2,20 @@
  * Created by colinambitious on 12/17/16.
  */
 
-import { AppRegistry } from 'react-native';
-import App from './container/App';
+import {AppRegistry} from 'react-native';
+import Root from './Root';
 
 if (!__DEV__) {
-  global.console = {
-    info: () => {},
-    log: () => {},
-    warn: () => {},
-    error: () => {},
-  };
+    global.console = {
+        info: () => {
+        },
+        log: () => {
+        },
+        warn: () => {
+        },
+        error: () => {
+        },
+    };
 }
 
-AppRegistry.registerComponent('HelloWorldReactNative', () => App);
+AppRegistry.registerComponent('HelloWorldReactNative', () => Root);
