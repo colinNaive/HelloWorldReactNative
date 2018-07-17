@@ -70,15 +70,19 @@ class List extends Component {
     }
 }
 
-const map2Props = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
         events: bindActionCreators(listAction, dispatch)
     }
 }
 
-export default connect(
-    (state) => ({
+const mapStateToProps = (state) => {
+    return {
         refreshing: state.listFetchData.refreshing,
         movies: state.listFetchData.movies
-    }), map2Props
+    }
+}
+
+export default connect(
+    mapStateToProps, mapDispatchToProps
 )(List)
